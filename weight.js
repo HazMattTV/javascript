@@ -23,15 +23,12 @@ document.addEventListener('DOMContentLoaded',()=>{
         ft = String(ft);
         ft = ft.slice(0,2);
         ft = Number(ft);
+        
+        // Fixing the BMI variable
+        BMI = (BMI * 10_000).toFixed(2);        
 
         // Chaining feet and inches variables together
         full_inch = `${ft}'${inch}`;
-
-        // Fixing the BMI variable
-        BMI = String(BMI);
-        BMI1 = BMI.slice(4, 6);
-        BMI2 = BMI.slice(6, 8);
-        BMI = `${BMI1}.${BMI2}`;
 
         // Printing out the answers
         document.getElementById("result_lbs").innerHTML = `Your weight in lbs: ${lbs.toFixed(2)} lbs`;
@@ -58,10 +55,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         let BMI = kg / cm ** 2;
 
         // Fixing up the BMI variable
-        BMI = String(BMI);
-        BMI1 = BMI.slice(4, 6);
-        BMI2 = BMI.slice(6, 8);
-        BMI = `${BMI1}.${BMI2}`;
+        BMI = (BMI * 10_000).toFixed(2);
 
         // Printing out the answers
         document.getElementById("result_kg").innerHTML = `Your weight in kg: ${kg.toFixed(2)} kg`;
