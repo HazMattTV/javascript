@@ -1,0 +1,46 @@
+/* 
+    HazMatt
+*/
+
+body {
+    background-color: #2e2e2e;
+    color: white;
+    font-family: Verdana;
+    padding: 6px 6px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+}
+p {
+    font-size: 1rem;
+    margin: 0px;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+}
+#main {
+    text-align: center;
+}
+#buttons {
+    display: flex;
+    gap: 20%;
+    justify-content: center;
+}
+#buttons button {
+    font-size: medium;
+    font-weight: bold;
+}
+input {
+    background-color: #2e2e2e;
+    color: white;
+    border: white 2px solid;
+    font-size: 1rem;
+    padding: 2%;
+    text-align: center;
+}
+input:focus {
+    outline: none;
+}
+#WoL {
+    font-weight: bold;
+}
