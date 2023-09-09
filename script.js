@@ -55,12 +55,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // Code
     // ---- If Hit gets clicked
     hit.onclick = function(){
+        // If the game is has not ended, and the stand buttong hadn't been clicked...
         if (end == false && stand_c == false) {
+            
+            // Pull an extra card and add it to the player's hand, the number ranging from 1 to 10
             let extra = Math.floor(Math.random()*(max - min + 1) + min);
             player += extra;
 
+            // Display the new number on the screen
             player_p.value = player;
-            
+
+            // Checks if the player has cards that in total are greater than 21. If the player does, he loses the game.
             if (player > 21) {
                 end = true;
                 WoL.innerText = "You Lost!";
@@ -74,13 +79,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if (stand_c = true && end == false) {
             
             // Functions
+
+            // If the cpu has a number in total less than a certain number, it continues picking cards until he has over that number
             function add_cpu(a){
                 while (cpu < a){
                     cpu += extra;
                 };
             };
 
-            // Extra in CPU
+            // Declaring the extra variable to allow for the bot to pick another card
             let extra = Math.floor(Math.random()*(max - min + 1) + min);
 
             // Checks for the risk factor from 1 to 4. The higher it is, the more daring the CPU gets
@@ -103,10 +110,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 }
             };
 
-            // Printing out the result
+            // Once hit stand, the screen *should* print out the full cpu score, + the extra cards it pulled
             cpu_p.value = cpu;
 
-            // Checking if you've won or not
+            // Once hit stand, the game checks if you've won or not, depending on your score compared to the CPU's
             if (cpu < player || cpu > 21){
                 end_game("You Won!");
             }
@@ -121,6 +128,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     // ---- If Retry gets clicked
     retry.onclick = function(){
+
+        // Refreshes the page
         window.location.reload();
     };
 })
