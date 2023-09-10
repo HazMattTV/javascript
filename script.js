@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // Ending Cases
     let end = false;
     let stand_c = false;
+
+    // Debug Mode
     let debug = false;
 
     // Range of Random numbers
@@ -106,7 +108,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 }
                 case 4: {
                     add_cpu(player);
-                    break;
+                    break; // This break doesn't have to be there
                 }
             };
 
