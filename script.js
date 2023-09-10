@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     // Functions
     function end_game(a){
-        end == true;
+        end = true;
         WoL.innerText = a;
     };
 
@@ -69,8 +69,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
             // Checks if the player has cards that in total are greater than 21. If the player does, he loses the game.
             if (player > 21) {
-                end = true;
-                WoL.innerText = "You Lost!";
+                end_game("You Lost!")
             };
         };
     };
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             
             // Functions
 
-            // If the cpu has a number in total less than a certain number, it continues picking cards until he has over that number
+            // ---- If the cpu's total number less than a certain number, it continues picking cards until he has over that number
             function add_cpu(a){
                 while (cpu < a){
                     cpu += extra;
