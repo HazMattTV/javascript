@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let stand_c = false;
 
     // Debug Mode
-    let debug = false;
+    const debug = false;
 
     // Range of Random numbers
     const min = 1;
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // Code
     // ---- If Hit gets clicked
     hit.onclick = function(){
-        // If the game is has not ended, and the stand buttong hadn't been clicked...
+        // If the game is has not ended, and the stand button hadn't been clicked...
         if (end == false && stand_c == false) {
             
             // Pull an extra card and add it to the player's hand, the number ranging from 1 to 10
@@ -67,10 +67,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
             // Display the new number on the screen
             player_p.value = player;
 
-            // Checks if the player has cards that in total are greater than 21. If the player does, he loses the game.
+            // Checks if the player's total cards are greater than 21. If the player does, he loses the game.
             if (player > 21) {
-                end_game("You Lost!")
-            };
+                end_game("You Lost!");
+            }
+            // Checks if the player's total cards is equal to 21. If the player does, he automatically wins the game, and the screen reveals the CPU's original amount of cards
+            else if (player == 21) {
+                cpu_p.value = cpu;
+                end_game("You Won!");
+            }
         };
     };
 
