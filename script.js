@@ -8,23 +8,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let stand_c = false;
 
     // Debug Mode
-    const debug = false;
+    const debug = true;
 
     // Range of Random numbers
     const min = 1;
     const max = 10;
 
     // Player
-    let player1 = Math.floor(Math.random()*(max - min + 1) + min);
-    let player2 = Math.floor(Math.random()*(max - min + 1) + min);
+    let player1 = rand(min, max);
+    let player2 = rand(min, max);
     let player = player1 + player2;
 
     // CPU
-    const risk_min = 1;
-    const risk_max = 4;
-    const risk_factor = Math.floor(Math.random()*(risk_max - risk_min + 1) + risk_min);
-    let cpu1 = Math.floor(Math.random()*(max - min + 1) + min);
-    let cpu2 = Math.floor(Math.random()*(max - min + 1) + min);
+    const risk_factor = rand(1, 4);
+    let cpu1 = rand(min, max);
+    let cpu2 = rand(min, max);
     let cpu = cpu1 + cpu2;
 
     // Buttons and Displays
@@ -36,9 +34,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let retry = document.querySelector('button[id="retry"]');
 
     // Functions
+    // ---- This function ends the game and prints out a message to the player
     function end_game(a){
         end = true;
         WoL.innerText = a;
+    };
+    // ---- This function returns a random number between the mininum number, and the maximum number.
+    function rand(min, max) {
+        let rand_int = Math.floor(Math.random()*(max - min + 1) + min);
+        return rand_int;
     };
 
     // Other
@@ -61,13 +65,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if (end == false && stand_c == false) {
             
             // Pull an extra card and add it to the player's hand, the number ranging from 1 to 10
-            let extra = Math.floor(Math.random()*(max - min + 1) + min);
+            let extra = rand(min, max);
             player += extra;
 
             // Display the new number on the screen
             player_p.value = player;
 
-            // Checks if the player's total cards are greater than 21. If the player does, he loses the game.
+            // Checks if the player's total cards are greater than 21. If the player does, he automatically loses the game.
             if (player > 21) {
                 end_game("You Lost!");
             }
@@ -82,19 +86,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // ---- If Stand gets clicked
     stand.onclick = function(){
         stand_c = true;
+        // If the game hasn't ended, and the stand button had been clicked...
         if (stand_c = true && end == false) {
+
+            // Declaring the extra variable to allow for the bot to pick another card
+            let extra = rand(min, max);
             
             // Functions
-
-            // ---- If the cpu's total number less than a certain number, it continues picking cards until he has over that number
+            // ---- If the cpu's total number is less than a certain number, it continues picking cards until he has over that number
             function add_cpu(a){
                 while (cpu < a){
                     cpu += extra;
                 };
             };
-
-            // Declaring the extra variable to allow for the bot to pick another card
-            let extra = Math.floor(Math.random()*(max - min + 1) + min);
 
             // Checks for the risk factor from 1 to 4. The higher it is, the more daring the CPU gets
             switch (risk_factor) {
@@ -112,7 +116,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 }
                 case 4: {
                     add_cpu(player);
-                    break; // This break doesn't have to be there
+                    break; // This break doesn't have to be there, but I added it for consistency purposes
                 }
             };
 
@@ -138,4 +142,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
         // Refreshes the page
         window.location.reload();
     };
-})
+});
