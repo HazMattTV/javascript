@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let stand_c = false;
 
     // Debug Mode
-    const debug = true;
+    const debug = false;
 
     // Range of Random numbers
     const min = 1;
